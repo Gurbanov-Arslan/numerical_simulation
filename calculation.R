@@ -5,6 +5,7 @@ suma_fond <- 30000
 
 clienti <- tibble(numar_clienti=c(0, 1, 2, 3), probabilitate=c(0.2, 0.2, 0.5, 0.1))
 cerere <- tibble(suma_bani = c(1000, 2000, 3000), probabilitate = c(0.5, 0.3, 0.2))
+nr_zile_solicitare <- tibble(nr_zile = c(2, 3, 4), probabilitate = c(0.3, 0.6, 0.1))
 
 # clienti <- c("0"=0.2, "1"=0.2, "2"=0.5, "3"=0.1)
 # cerere <- c("1000"=0.5, "2000"=0.3, "3000"=0.2)
