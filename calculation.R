@@ -112,6 +112,7 @@ calcul_dobanda(dobanda, 3000, 3)
 valoarea_totala_cerere = 0
 valoarea_totala_dobanda = 0
 soldul_casei = suma_fond
+profit = 0
 if (numar_clienti > 0) {
   for (i in 1:numar_clienti) {
     random_cerere <- runif(1)
@@ -124,7 +125,7 @@ if (numar_clienti > 0) {
     valoarea_totala_dobanda = valoarea_totala_dobanda + valoare_dobanda
     
     soldul_casei = suma_fond - valoarea_totala_cerere + valoarea_totala_dobanda - taxa_casei
-    
+    profit = suma_fond - soldul_casei
     print(paste0("Numar clinti: ", numar_clienti ))
     print( paste0("Valoarea ceruta: ", valoare_cerere ))
     print(paste0("Valoarea totala a cererii: ", valoarea_totala_cerere))
@@ -134,5 +135,6 @@ if (numar_clienti > 0) {
     print(paste0("Soldul casei: ", soldul_casei))
     
   }
+  print(paste0("Profit optinut: ", profit))
 }
 
