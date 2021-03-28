@@ -1,6 +1,7 @@
 library(tidyverse)
 
 suma_fond <- 30000
+taxa_casei <- 50
 
 
 clienti <- tibble(numar_clienti=c(0, 1, 2, 3), probabilitate=c(0.2, 0.2, 0.5, 0.1))
@@ -51,20 +52,28 @@ intervale_nr_zile <- calcul_interval_probabilitati(nr_zile_solicitare)
 random_clienti <- runif(1)
 numar_clienti <- calcul_numere(random_clienti, intervale_clienti)
 
+valoarea_totala_cerere = 0
 valoarea_totala_dobanda = 0
+soldul_casei = suma_fond
+profit = 0
 if (numar_clienti > 0) {
   for (i in 1:numar_clienti) {
     random_cerere <- runif(1)
     valoare_cerere <- calcul_numere(random_cerere, intervale_cerere)
+    valoarea_totala_cerere = valoarea_totala_cerere + valoare_cerere 
     random_nr_zile <- runif(1)
     nr_zile <- calcul_numere(random_nr_zile, intervale_nr_zile)
     procent_dobanda <- calcul_dobanda(dobanda, valoare_cerere, nr_zile)
     valoare_dobanda <- valoare_cerere*nr_zile*procent_dobanda
     valoarea_totala_dobanda = valoarea_totala_dobanda + valoare_dobanda
-    print(valoare_dobanda)
-    
+    soldul_casei = suma_fond - valoarea_totala_cerere + valoarea_totala_dobanda - taxa_casei
+    profit = suma_fond - soldul_casei
   }
+  print(paste0("Valoarea totala a dobanzii: ", valoarea_totala_dobanda))
+  print(paste0("Soldul casei: ", soldul_casei))
+  print(paste0("Profit optinut: ", profit))
 }
+
 
 
 

@@ -107,3 +107,32 @@ calcul_dobanda <- function(df_dobanda, suma_ceruta, nr_zile_solicitare){
 }
 
 calcul_dobanda(dobanda, 3000, 3)
+
+
+valoarea_totala_cerere = 0
+valoarea_totala_dobanda = 0
+soldul_casei = suma_fond
+if (numar_clienti > 0) {
+  for (i in 1:numar_clienti) {
+    random_cerere <- runif(1)
+    valoare_cerere <- calcul_numere(random_cerere, intervale_cerere)
+    valoarea_totala_cerere = valoarea_totala_cerere + valoare_cerere 
+    random_nr_zile <- runif(1)
+    nr_zile <- calcul_numere(random_nr_zile, intervale_nr_zile)
+    procent_dobanda <- calcul_dobanda(dobanda, valoare_cerere, nr_zile)
+    valoare_dobanda <- valoare_cerere*nr_zile*procent_dobanda
+    valoarea_totala_dobanda = valoarea_totala_dobanda + valoare_dobanda
+    
+    soldul_casei = suma_fond - valoarea_totala_cerere + valoarea_totala_dobanda - taxa_casei
+    
+    print(paste0("Numar clinti: ", numar_clienti ))
+    print( paste0("Valoarea ceruta: ", valoare_cerere ))
+    print(paste0("Valoarea totala a cererii: ", valoarea_totala_cerere))
+    print(paste0("Valoare dobanda: ", valoare_dobanda))
+    print(paste0("Valoarea totala a dobanzii: ", valoarea_totala_dobanda))
+    
+    print(paste0("Soldul casei: ", soldul_casei))
+    
+  }
+}
+
